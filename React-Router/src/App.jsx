@@ -4,6 +4,7 @@ import About from "../Components/About";
 import Vans from "../Components/Vans";
 import Home from "../Components/Home";
 import { Footer } from "../Components/Footer";  
+import VanDetails from "../Components/VanDetails";
 import './server'
 function App(){
   return(
@@ -13,6 +14,7 @@ function App(){
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vans" element={<Vans />} />
+        <Route path="/vans/:id" element={<VanDetails />} />
       </Routes>
       <Footer />
     </BrowserRouter>

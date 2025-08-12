@@ -1,5 +1,5 @@
 import{useEffect , useState} from 'react';
-
+import { Link } from 'react-router';
 
 export default function Vans(){
 const [vans, setVans] = useState([]);
@@ -11,7 +11,8 @@ useEffect(() => {
 }, []); 
 
 const vansElement = vans.map(van=> (
-    <div key={van.id} className='bg-white p-4 rounded-lg shadow-md'>
+    <Link to={`/vans/${van.id}`} aria-label={`View details for ${van.name }`}>
+        <div key={van.id} className='bg-white p-4 rounded-lg shadow-md'>
         <img src={van.imageUrl} alt={van.name} className='' />
         <div className='flex justify-between w-full mt-4 font-bold text-[20px]'>
             <h2 >{van.name}</h2>
@@ -22,6 +23,8 @@ const vansElement = vans.map(van=> (
                             van.type.toLowerCase() === "luxury" ? "bg-black ": "bg-[#115E59] " }
                         p-2 rounded-lg px-4 mt-2 text-white font-bold`}>{van.type}</button>
     </div>
+    </Link>
+    
 ))
     return(
         <div className="flex flex-col items-center gap-4 p-4">
