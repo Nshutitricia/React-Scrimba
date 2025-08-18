@@ -9,7 +9,7 @@ export default function VanDetails(){
         fetch(`/api/vans/${id}`)
         .then((data)=> data.json())
         .then(data => setVanDetail(data.vans))
-        .catch((err)=> console.log(err))
+        .catch((err)=> console.log(err))           
     },[id])
         
     return (
@@ -25,7 +25,7 @@ export default function VanDetails(){
                     <p className="mt-3">{vanDetail.description}</p>
                     <button className="bg-[#ff8c38] p-3 w-[90%] mt-10 font-bold mb-15 text-white">Rent this van</button>
                 </div>
-            ) : <p>Loading</p>}
+            ) : <p>Loading...</p>}
         </div>
     )
 }
