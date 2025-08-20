@@ -1,4 +1,4 @@
-import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
+import {BrowserRouter,Routes,Route,Link, Outlet} from "react-router-dom";
 import Header from "../Components/Header";
 import About from "../Components/About";
 import Vans from "../Components/Vans";
@@ -10,6 +10,11 @@ import Host from "../Components/Host";
 import Dashboard from "../Components/Host/Dashboard"
 import Income from "../Components/Host/Income";
 import Reviews from "../Components/Host/Reviews";
+import HostVanDetail from "../Components/Host/HostVansDetail";
+import HostVanInfo from "../Components/Host/HostVanInfo";
+import HostVanPricing from "../Components/Host/HostVanPricing";
+import HostVanData from "../Components/Host/HostVanData";
+import HostVanPhoto from "../Components/Host/HostVanPhoto";
 
 import './server'
 function App(){
@@ -18,14 +23,20 @@ function App(){
      <Routes>
       <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="host" element={<Host />}>
-            <Route index element={<Dashboard />} />
-            <Route path="income" element={<Income />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetails />} />
+          <Route path="host" element={<Host />}>
+            <Route index element={<Dashboard />} />
+            <Route path="income" element={<Income />} />
+            <Route path="vans" element={<HostVanDetail />} />
+            <Route path="vans/:id" element={<HostVanInfo />} >
+              <Route index element={<HostVanData />} />
+              <Route path="pricing" element={<HostVanPricing/>} />
+              <Route path="photo" element={<HostVanPhoto/>} />
+             </Route>
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
       </Route>
       </Routes>
     </BrowserRouter>

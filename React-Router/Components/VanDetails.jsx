@@ -9,8 +9,9 @@ export default function VanDetails(){
         fetch(`/api/vans/${id}`)
         .then((data)=> data.json())
         .then(data => setVanDetail(data.vans))
-        .catch((err)=> console.log(err))           
+        .catch((err)=> console.log(err))    
     },[id])
+    console.log(vanDetail)    
         
     return (
         <div className="flex flex-col items-center gap-4 p-4">
