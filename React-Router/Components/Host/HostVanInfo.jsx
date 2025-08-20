@@ -56,7 +56,7 @@ export default function HostVanInfo(){
             </nav>
             <main>
 
-                <Outlet />
+                <Outlet context={{vanInfo}} />
             </main>
        </div>
     )

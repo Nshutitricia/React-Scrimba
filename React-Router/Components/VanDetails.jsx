@@ -1,9 +1,12 @@
 import React from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams,NavLink,useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 export default function VanDetails(){
     const {id}= useParams()
+    const location = useLocation()
+    console.log(location)
     const [vanDetail, setVanDetail] = useState("")
     useEffect(()=>{
         fetch(`/api/vans/${id}`)
@@ -11,13 +14,17 @@ export default function VanDetails(){
         .then(data => setVanDetail(data.vans))
         .catch((err)=> console.log(err))    
     },[id])
-    console.log(vanDetail)    
+    console.log(vanDetail)   
+    const search = location.state?.search || ""
+    const type = location.state?.type || "all"
         
     return (
         <div className="flex flex-col items-center gap-4 p-4">
+            
            {vanDetail ? (
                 <div className=" ">
-                    <img src={vanDetail.imageUrl} alt="" className="w-full" />
+                    <NavLink to={`..${search}`} relative="path" >&larr; <span> Back to {type} vans</span></NavLink>
+                    <img src={vanDetail.imageUrl} alt="" className="w-full pt-4" />
                     <button className={` ${vanDetail.type.toLowerCase() === "simple" ? "bg-[#E17654]":
                             vanDetail.type.toLowerCase() === "luxury" ? "bg-black ": "bg-[#115E59] " }
                         p-2 rounded-lg px-4 mt-2 text-white font-bold`}>{vanDetail.type}</button>

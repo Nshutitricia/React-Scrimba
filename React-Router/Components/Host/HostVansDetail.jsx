@@ -13,7 +13,7 @@ export default function VansDetail(){
     },[])
 
     const vanComponent = vanDescriptor.map((van)=>(
-        <Link to={`/host/vans/${van.id}`}>
+        <Link to={van.id}>
             <div key={van.id} className="flex shadow-md p-4 " >
                 <img src={van.imageUrl} alt="" className="w-20" />
                 <div className="flex flex-col justify-center px-4">
