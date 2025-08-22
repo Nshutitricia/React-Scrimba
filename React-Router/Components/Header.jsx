@@ -1,5 +1,6 @@
 import {NavLink} from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
+import { FaRegUserCircle } from "react-icons/fa";
 
 export default function Header() {
     const activeLink = {
@@ -22,6 +23,9 @@ export default function Header() {
                     <li><NavLink to="/vans"
                          style= {({isActive})=> (isActive ? activeLink : null)}
                     >Vans</NavLink></li>
+                    <li className='flex  items-center'><NavLink to="/login"
+                         style= {({isActive})=> (isActive ? activeLink : null)}
+                    ><FaRegUserCircle className="text-xl" /></NavLink></li>
                 </ul>
             </nav>
         </>
